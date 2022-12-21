@@ -1,9 +1,7 @@
-import pytest
-import pytest_html.html_report
-import pip
-
-#pytest_html.html_report.HTMLReport
-#pytest
+import subprocess
+import pipreqs
 
 
-pytest_html.html_report("AAS")
+#subprocess.run(["pytest","--html=report.html "])
+subprocess.run(["pipreqs"])
+
