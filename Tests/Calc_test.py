@@ -35,8 +35,10 @@ class TestCalc:
     def testdelenie(self,delenie):
         assert test_lib.calc(*delenie) == 1
     #тест калькулятора с ошибкой
-    def testerror(self,error):
+    """def testerror(self,error):
         assert test_lib.calc(error) == 0
+    """
+
     #тест калькулятора с ошибкой TypeError исключая ошибку
     def testerrorwithpytest(self,error):
         with pytest.raises(TypeError):

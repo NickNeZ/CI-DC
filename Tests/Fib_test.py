@@ -13,5 +13,6 @@ class TestFebanachi:
             test_lib.Fibanachi(0)
 
     #тест чисел Фибоначчи с n = 0
-    def testZEROincorrect(self):
+    """def testZEROincorrect(self):
         assert test_lib.Fibanachi(0)
+    """

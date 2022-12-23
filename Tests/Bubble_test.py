@@ -39,5 +39,6 @@ class TestSortBubble:
        with pytest.raises(TypeError):
            test_lib.sort(incorrectnumbers)
     #тестируем сортировку с последним элементом массива типа str
-    def testincorrectnumber(self,incorrectnumbers):
+    """def testincorrectnumber(self,incorrectnumbers):
         assert test_lib.sort(incorrectnumbers) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    """
