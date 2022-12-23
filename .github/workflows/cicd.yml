@@ -6,7 +6,7 @@ jobs:
   test-and-cover-pack:
     runs-on: ubuntu-latest
     env:
-      COVERAGE_HTML_REPORT_PATH: /tmp/coverage_html_report
+      COVERAGE_HTML_REPORT_PATH: tmp/coverage_html_report
       COVERAGE_XML_REPORT_PATH: /tmp/coverage_html_report.xml
       PYTEST_REPORT_PATH: /tmp/pytest_report.html
     steps:
