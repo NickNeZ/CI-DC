@@ -1,39 +1,39 @@
-name: ACDC
+name: Test CI CD
 on:
   push:
-    branches: [master]
+    branches: [main]
 jobs:
-  test-and-cover-pack:
+  test-and-coverage-package:
     runs-on: ubuntu-latest
     env:
       COVERAGE_HTML_REPORT_PATH: /tmp/coverage_html_report
       COVERAGE_XML_REPORT_PATH: /tmp/coverage_xml_report.xml
       PYTEST_REPORT_PATH: /tmp/pytest_report.html
     steps:
-      - name: "Check repo"
+      - name: "Checkout repository"
         uses: actions/checkout@v3
-      - name: "Python install"
+      - name: "Install python"
         uses: actions/setup-python@v4
         with:
           python-version: '3.8'
           architecture: 'x64'
-      - name: "Requiremets install"
+      - name: "Install project dependencies"
         run: pip install -r requirements.txt
-      - name: "Some tests"
+      - name: "Run tests and code coverage analysis"
         run: coverage run -m pytest --html=${{ env.PYTEST_REPORT_PATH }} --self-contained-html
-      - name: "Cover html"
+      - name: "Generate code coverage html report"
         run: coverage html --directory ${{ env.COVERAGE_HTML_REPORT_PATH }}
-      - name: "Archive reports for tests"
+      - name: "Archive pytest and coverage reports"
         uses: actions/upload-artifact@v3
         if: ${{!cancelled()}}
         with:
-          name: "Reports!"
-          path:
+          name: "Test and coverage reports"
+          path: |
             ${{ env.PYTEST_REPORT_PATH }}
             ${{ env.COVERAGE_HTML_REPORT_PATH }}
-      - name: "XML les goo"
+      - name: "Generate code coverage xml report"
         run: coverage xml -o ${{ env.COVERAGE_XML_REPORT_PATH }}
-      - name: "XML to Codacy"
+      - name: "Push coverage xml report to codacy"
         uses: codacy/codacy-coverage-reporter-action@v1
         if: ${{!cancelled()}}
         with:
@@ -41,13 +41,13 @@ jobs:
           coverage-reports: ${{ env.COVERAGE_XML_REPORT_PATH }}
 
   publish-package-as-artifact:
-    needs: [test-and-cover-pack]
+    needs: ["test-and-coverage-package"]
     runs-on: ubuntu-latest
     steps:
-      - name: "Check repo"
+      - name: "Checkout repository"
         uses: actions/checkout@v3
-      - name: "Publish as artifact"
+      - name: "Publish package as artifact"
         uses: actions/upload-artifact@v3
         with:
-          name: "Making package"
-          path: "Lib"
+          name: "Built package"
+          path: "src"
