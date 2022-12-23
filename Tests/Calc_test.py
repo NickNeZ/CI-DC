@@ -1,4 +1,4 @@
-import test_lib
+from Lib import test_lib
 import pytest
 #тест калькулятора
 class TestCalc:

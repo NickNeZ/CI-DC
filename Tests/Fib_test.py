@@ -1,5 +1,7 @@
 import pytest
-import test_lib
+from Lib import test_lib
+
+
 #тест чисел Фибоначчи
 class TestFebanachi:
     #тест чисел Фибоначчи с n = 10

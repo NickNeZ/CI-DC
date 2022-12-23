@@ -1,4 +1,4 @@
-import test_lib
+from Lib import test_lib
 import pytest
 #тест сортировки пузырьком
 class TestSortBubble:
@@ -24,20 +24,20 @@ class TestSortBubble:
         return [1,2,3,4,5,6,7,8,9,'10']
     #тестируем сортировку с числами по возрастанию
     def testminmmaxnumbers(self,mintomaxnumbers):
-        assert test_lib.sort(mintomaxnumbers) == [1,2,3,4,5,6,7,8,9,10]
+        assert test_lib.sort(mintomaxnumbers) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     #тестируем сортировку с числами в случайном порядке
     def testnumbers(self,numbers):
-        assert test_lib.sort(numbers) == [0,1,2,3,4,4,9,18,38,71]
+        assert test_lib.sort(numbers) == [0, 1, 2, 3, 4, 4, 9, 18, 38, 71]
     #тестируем сортировку с одинаковыми числами
     def testequalsnumbers(self,equalsnumbers):
-        assert test_lib.sort(equalsnumbers) == [1,1,1,1,1,1,1,1,1,1]
+        assert test_lib.sort(equalsnumbers) == [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
     #тестируем сортировку с числами по убыванию
     def testmaxtomin(self,maxtomin):
-        assert test_lib.sort(maxtomin) == [1,2,3,4,5,6,7,8,9,10]
+        assert test_lib.sort(maxtomin) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     #тестируем сортировку с последним элементом массива типа str исключая ошибку
     def testincorrectnumberswithpytest(self,incorrectnumbers):
        with pytest.raises(TypeError):
            test_lib.sort(incorrectnumbers)
     #тестируем сортировку с последним элементом массива типа str
     def testincorrectnumber(self,incorrectnumbers):
-        assert test_lib.sort(incorrectnumbers) == [1,2,3,4,5,6,7,8,9,10]
+        assert test_lib.sort(incorrectnumbers) == [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
