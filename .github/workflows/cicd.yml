@@ -22,7 +22,7 @@ jobs:
       - name: "Some tests"
         run: coverage run -m pytest --html=${{ env.PYTEST_REPORT_PATH }} --self-contained-html
       - name: "Cover html"
-        run: coverage html --directory${{ env.COVERAGE_HTML_REPORT_PATH }}
+        run: coverage html --directory ${{ env.COVERAGE_HTML_REPORT_PATH }}
       - name: "Archive reports for tests"
         uses: actions/upload-artifact@v3
         if: ${{!cancelled()}}
