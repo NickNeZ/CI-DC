@@ -25,7 +25,7 @@ jobs:
         run: coverage html --directory${{ env.COVERAGE_HTML_REPORT_PATH }}
       - name: "Archive reports for tests"
         uses: actions/upload-artifact@v3
-        if: ${{!cancelled}}
+        if: ${{!cancelled()}}
         with:
           name: "Reports!"
           path:
@@ -35,7 +35,7 @@ jobs:
         run: coverage xml -o ${{ COVERAGE_XML_REPORT_PATH }}
       - name: "XML to Codacy"
         uses: codacy/codacy-coverage-reporter-action@v1
-        if: ${{!cancelled}}
+        if: ${{!cancelled()}}
         with:
           project-token: ${{ secrets.CODACY_PROJECT_API_TOKEN }}
           coverage-reports: ${{ env.COVERAGE_XML_REPORT_PATH }}
